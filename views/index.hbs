@@ -1,0 +1,110 @@
+<style>
+    #submit{
+        margin-top: 7px;
+    }
+    #nhan_chia{
+        margin-top: 5px;
+    }
+    #error{
+        color: red;
+    }
+</style>
+<form id="form" method="POST" >
+        <div class="calculator" >
+            <h1>Bé tập tính</h1>
+            <div class="row" >
+                <div class="col-1">
+                    <label for"num01">Số thứ nhất</label>
+                    <br><br>
+                    <label for"num02">Số thứ hai</label>
+                    <br><br>
+                    <div>Kết quả</div>
+                    <br>
+
+                </div>
+                <div class="col-1">
+                    <input name="num01" id="num01" size="12" value="{{num01}}" required>
+                    <br><br>
+                    <input name="num02" id="num02" size="12" value="{{num02}}" required>
+                    <br><br>
+                    <input  name="result" size="12" value="{{result}}">
+                </div>
+                <div class="col">
+                    <div class="row">
+                        <div class="col-0.5">
+                            <input type="radio" name="cal" id="cong" size="15" value="cong" {{check_cong}} required>
+                        </div>
+                        &nbsp;
+                        <div class="col-0.5">
+                            <label for="cong">Cộng&nbsp;&nbsp;&nbsp;</label>
+                        </div>
+                        <div class="col-0.5">
+                            <input type="radio" name="cal" id="tru" size="15" value="tru" {{check_tru}} required>
+                        </div>
+                        &nbsp;
+                        <div class="col-0.5">
+                            <label for="tru">Trừ</label>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row" id="nhan_chia">
+                        <div class="col-0.5">
+                            <input type="radio" name="cal" id="nhan" size="15" value="nhan" {{check_nhan}} required>
+                        </div>
+                        &nbsp;
+                        <div class="col-0.9">
+                            <label for="nhan">Nhân</label>&nbsp;&nbsp;&nbsp;</span>
+                        </div>
+                        <div class="col-0.5">
+                            <input type="radio" name="cal" id="chia" size="15" value="chia" {{check_chia}} required>
+                        </div>
+                        &nbsp;
+                        <div class="col-0.5">
+                            <label for="chia">Chia</label>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row-4" id="submit">
+                        <button type="submit">Submit</button>
+                    </div>
+                </div>
+            </div>
+            <div class="row" id="error">
+                <div class="col">
+                    <p id="error04" hidden>Dữ liệu số thứ nhất phải là số thực</p>
+                    <p id="error05" hidden>Dữ liệu số thứ hai phải là số thực</p>
+                </div>
+            </div>
+        </div>
+</form>
+
+<script>
+    const form = document.getElementById('form');
+    const error04 = document.getElementById('error04');
+    const error05 = document.getElementById('error05');
+
+    const num01 = document.getElementById('num01');
+    const num02 = document.getElementById('num02');
+
+
+    num01.onkeyup = keyup01;
+    num02.onkeyup = keyup02;
+
+    function keyup01(event) {
+        var x = new Number(document.getElementById("num01").value);
+        if (isNaN(x - 1)) {
+            error04.removeAttribute('hidden');
+        } else{
+            error04.setAttribute('hidden',true);
+        }
+    }
+
+    function keyup02(event) {
+        var y = new Number(document.getElementById("num02").value);
+        if (isNaN(y - 1)) {
+            error05.removeAttribute('hidden');
+        }else{
+            error05.setAttribute('hidden',true);
+        }
+    }
+</script>
